@@ -1,0 +1,15 @@
+/* Ensure the map container has a fixed height */
+#map {
+    width: 100%;
+    height: 800px;
+    border: 1px solid #ddd;
+    background: #fff;
+    margin-bottom: 10px;
+}
+/* Status message styling */
+#save-status {
+    margin-top: 10px;
+    font-weight: bold;
+    color: green;
+}
+
