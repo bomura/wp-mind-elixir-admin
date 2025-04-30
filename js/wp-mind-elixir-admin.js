@@ -13,12 +13,14 @@ jQuery(document).ready(function($){
             const $sel = $('#mea-map-selector').empty();
             resp.data.forEach(item => {
                 $sel.append(
-                        $('<option>')
-                        .val(item.name)
-                        .text(item.topic)
-                        );
+                    $('<option>')
+                    .val(item.name)
+                    .text(item.topic)
+                    );
             });
-            $('#mea-map-selector').val(name).change();
+            // name が空文字のときは先頭オプションを選択
+            const toSelect = name || $sel.find('option:first').val();
+            $sel.val(toSelect).change();
         });
     }
 
@@ -31,7 +33,7 @@ jQuery(document).ready(function($){
         if (selected) {
             const name = $('#mea-map-selector').val();
             $.post(MEAMapData.ajax_url, {
-                           action: 'mea_load_mind_map',
+                action: 'mea_load_mind_map',
                 map_name: name,
                 nonce: MEAMapData.nonce
             })
@@ -42,7 +44,7 @@ jQuery(document).ready(function($){
                     }else{
                         mind.init(response.data);
                     }
-                                   $('#save-status').text('Mind map loaded successfully!');
+                    $('#save-status').text('Mind map loaded successfully!');
                 } else {
                     $('#save-status').text('Error loading mind map.');
                 }
