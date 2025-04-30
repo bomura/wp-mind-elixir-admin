@@ -47,6 +47,8 @@ WordPress options table under the key 'mind_elixir_map_data'.
 == Upgrade Notice ==
 = 1.0 =
 No special upgrade procedures required for the initial release.
+= 1.1 =
+Changed to be able to manage multiple mind maps
 
 == License ==
 This plugin is released under the MIT License.
