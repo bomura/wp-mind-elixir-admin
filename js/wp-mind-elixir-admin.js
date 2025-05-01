@@ -13,10 +13,10 @@ jQuery(document).ready(function($){
             const $sel = $('#mea-map-selector').empty();
             resp.data.forEach(item => {
                 $sel.append(
-                    $('<option>')
-                    .val(item.name)
-                    .text(item.topic)
-                    );
+                        $('<option>')
+                        .val(item.name)
+                        .text(item.topic)
+                        );
             });
             // name が空文字のときは先頭オプションを選択
             const toSelect = name || $sel.find('option:first').val();
@@ -28,12 +28,12 @@ jQuery(document).ready(function($){
     refreshMapList();
 
     // プルダウンが変わったら即ロード
-       $('#mea-map-selector').on('change', function(){
+    $('#mea-map-selector').on('change', function(){
         const selected = $(this).val();
         if (selected) {
             const name = $('#mea-map-selector').val();
             $.post(MEAMapData.ajax_url, {
-                action: 'mea_load_mind_map',
+                action: 'mea_load_mind_map',
                 map_name: name,
                 nonce: MEAMapData.nonce
             })
@@ -89,33 +89,44 @@ jQuery(document).ready(function($){
         mind.refresh(newData);  // Replace with a new mind map.
         const today = new Date().toISOString().replaceAll(/[-T:Z\.]/g,'');
         var name = 'mind_elixir_map_data_' + today;
+
         $('#mea-map-selector').append(
-                $('<option selected>')
+            $('<option selected>')
                 .val(name)
-                             .text('New Mind Map' + ' (' + today + ')')
-                    );
-                $('#save-status').text('');
-                });
+                .text('New Mind Map' + ' (' + today + ')')
+        );
 
-        // Delete button handler: Delete a map and refresh the map.
-        $('#delete-map-button').on('click', function(){
-            const name = $('#mea-map-selector').val();
-            $.post(MEAMapData.ajax_url, {
-                action: 'mea_delete_mind_map',
-                name: name,
-                nonce: MEAMapData.nonce
-            })
-            .done(function(response){
-                if (response.success) {
-                    $('#save-status').text('Mind map deleted successfully!');
-                    refreshMapList(name);
-                } else {
-                    $('#save-status').text('Error deleting mind map.');
-                }
-            })
-            .fail(function(){
-                $('#save-status').text('AJAX error.');
-            });
+        $('#save-status').text('');
+    });
+
+    // Delete button handler: Delete a map and refresh the map.
+    $('#delete-map-button').on('click', function(){
+        // mind.getData() でオブジェクトが得られているなら…
+        const data = mind.getData();
+        const topic = data.nodeData.topic;
+
+        // 確認ダイアログを出す
+           const ok = window.confirm('本当にマインドマップ「'+ topic +'」を削除してもよろしいですか？');
+        if (!ok) {
+            // キャンセルされたら何もしない
+            return;
+        }
+        const name = $('#mea-map-selector').val();
+        $.post(MEAMapData.ajax_url, {
+            action: 'mea_delete_mind_map',
+            name: name,
+            nonce: MEAMapData.nonce
+        })
+        .done(function(response){
+            if (response.success) {
+                $('#save-status').text('Mind map deleted successfully!');
+                refreshMapList(name);
+            } else {
+                $('#save-status').text('Error deleting mind map.');
+            }
+        })
+        .fail(function(){
+            $('#save-status').text('AJAX error.');
         });
-
+    });
 });
