@@ -54,7 +54,13 @@ function mea_list_maps() {
                         ];
                 }
         }
-        wp_send_json_success($list);
+        // topic 列だけを取り出す
+        $topics = array_column($list, 'topic');
+
+        // topic 列と元の配列を一緒にソート（昇順）
+        array_multisort($topics, SORT_DESC, SORT_STRING, $list);
+
+	    wp_send_json_success($list);
 }
 add_action('wp_ajax_mea_list_maps', 'mea_list_maps');
 
