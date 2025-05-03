@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Mind Elixir Admin Mind Maps
  * Description: Adds an admin page for creating/editing mind maps using Mind Elixir.
- * Version: 1.1
+ * Version: 1.2
  * Author: bomura
  */
 
@@ -35,9 +35,9 @@ function mea_list_maps() {
 
         $rows = $wpdb->get_results(
                 $wpdb->prepare(
-                        "SELECT option_name, option_value 
-                        FROM {$wpdb->options} 
-                        WHERE option_name LIKE %s 
+                        "SELECT option_name, option_value
+                        FROM {$wpdb->options}
+                        WHERE option_name LIKE %s
                         ORDER BY option_id DESC",
                         $pattern
                 ),
@@ -116,10 +116,11 @@ function mea_render_admin_page() {
         <h1>Mind Map Editor</h1>
         <div id="map"></div>
         <p>
-                        <select id="mea-map-selector"></select>
+            <select id="mea-map-selector"></select>
             <button id="save-map-button" class="button button-primary">Save Mind Map</button>
             <button id="new-map-button" class="button">New Mind Map</button>
             <button id="delete-map-button" class="button">Delete Mind Map</button>
+            <label><input type="checkbox" id="mea_autosave_enabled" name="mea_autosave_enabled" checked />自動保存を有効にする</label>
         </p>
         <div id="save-status"></div>
     </div>

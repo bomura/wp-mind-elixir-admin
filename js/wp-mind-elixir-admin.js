@@ -3,6 +3,18 @@ jQuery(document).ready(function($){
     mind = new MindElixir({ el: '#map' });
     mind.init(MindElixir.new('New Mind Map'));
 
+    var intervalMs = 5 * 60 * 1000;
+    // 定期実行を開始
+    var timerId = setInterval(function() {
+        // チェックボックスがチェックされているか判定
+        var isChecked = $('#mea_autosave_enabled').prop('checked');
+        console.log(isChecked);
+        if (isChecked) {
+            // ボタンのクリックイベントを発火
+            $('#save-map-button').trigger('click');
+        }
+    }, intervalMs);
+
     // 一覧取得＆プルダウン生成
     function refreshMapList(name = ''){
         $.post(MEAMapData.ajax_url, {
