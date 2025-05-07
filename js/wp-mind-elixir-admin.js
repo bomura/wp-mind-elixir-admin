@@ -95,6 +95,34 @@ jQuery(document).ready(function($){
         });
     });
 
+    async function downloadImage(type) {
+        let blob;
+        try{
+            if (type === 'png') {
+                blob = await mind.exportPng(true, '');
+            } else {
+                blob = mind.exportSvg(true, '');
+            }
+        } catch (err) {
+            console.error('エクスポート失敗:', err);
+            return;
+        }
+        if (!blob) return;
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `mindmap.${type}`;
+        a.click();
+        URL.revokeObjectURL(url);
+    }
+
+    $('#mea-export-png').on('click', function(){
+        downloadImage('png');
+    })
+    $('#mea-export-svg').on('click', function(){
+        downloadImage('svg');
+    })
+
     // New button handler: create a new root node and refresh the map.
     $('#new-map-button').on('click', function(){
         const newData = MindElixir.new('New Mind Map');

@@ -13,3 +13,19 @@
     color: green;
 }
 
+/* 管理画面全体を Meiryo に */
+.wrap,
+.wrap * {
+    font-family: "メイリオ", Meiryo, sans-serif !important;
+}
+
+/* マップコンテナ部分だけに適用したい場合 */
+#map,
+#map * {
+    font-family: "メイリオ", Meiryo, sans-serif !important;
+}
+
+/* 保存ステータスなど、他要素も個別指定可 */
+#save-status {
+    font-family: "メイリオ", Meiryo, sans-serif;
+}

@@ -118,6 +118,8 @@ function mea_render_admin_page() {
         <p>
             <select id="mea-map-selector"></select>
             <button id="save-map-button" class="button button-primary">Save Mind Map</button>
+            <button id="mea-export-svg" class="button">SVG ダウンロード</button>
+            <button id="mea-export-png" class="button">PNG ダウンロード</button>
             <button id="new-map-button" class="button">New Mind Map</button>
             <button id="delete-map-button" class="button">Delete Mind Map</button>
             <label><input type="checkbox" id="mea_autosave_enabled" name="mea_autosave_enabled" checked />自動保存を有効にする</label>
