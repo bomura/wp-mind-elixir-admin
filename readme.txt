@@ -3,7 +3,7 @@ Contributors: bomura
 Donate link: https://github.com/bomura/wp-mind-elixir-admin
 Tags: mind map, mindelixir, admin, editor, mind mapping, mindmap
 Tested up to: 6.8
-Stable tag: 1.0
+Stable tag: 1.2
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
@@ -49,6 +49,8 @@ WordPress options table under the key 'mind_elixir_map_data'.
 No special upgrade procedures required for the initial release.
 = 1.1 =
 Changed to be able to manage multiple mind maps
+= 1.2 =
+Added auto-save function every 5 minutes
 
 == License ==
 This plugin is released under the MIT License.
