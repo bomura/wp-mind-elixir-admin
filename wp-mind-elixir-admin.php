@@ -1,9 +1,15 @@
 <?php
 /**
- * Plugin Name: Mind Elixir Admin Mind Maps
- * Description: Adds an admin page for creating/editing mind maps using Mind Elixir.
- * Version: 1.2
- * Author: bomura
+ * Plugin Name: 	Mind Elixir Admin Mind Maps
+ * Plugin URI: 		https://blog.donguri3.net
+ * Description: 	Adds an admin page for creating/editing mind maps using Mind Elixir.
+ * Version: 		1.2
+ * Requires at least:	6.8
+ * Requires PHP:	8.3
+ * Author:		nando256
+ * Author URI:		https://blog.donguri3.net
+ * License:		MIT License
+ * Text Domain:		wp-mind-elixir-editor
  */
 
 // Exit if accessed directly.

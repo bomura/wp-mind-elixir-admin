@@ -1,5 +1,5 @@
 === Mind Elixir Admin Mind Maps ===
-Contributors: bomura
+Contributors: nando256
 Donate link: https://github.com/bomura/wp-mind-elixir-admin
 Tags: mind map, mindelixir, admin, editor, mind mapping, mindmap
 Tested up to: 6.8
